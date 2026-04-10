@@ -68,7 +68,7 @@ Comprobá que la API esté corriendo: `cd server && npm run dev`. Deberías ver 
 npm run build
 ```
 
-Genera la salida estática en `dist/`. Podés desplegarla en cualquier hosting estático (Vercel, Netlify, etc.) o servidor web.
+Genera `dist/` y copia a `public/` (para Vercel: estáticos en `public/`, API en `api/`). Para otros hostings podés usar solo `dist/`.
 
 ## Tecnologías
 
@@ -76,6 +76,7 @@ Genera la salida estática en `dist/`. Podés desplegarla en cualquier hosting e
 - **Expo Router** – navegación por archivos
 - **AsyncStorage** – guardado del token/sesión (localStorage en web)
 - **TypeScript**
+# escuadra
 # escuadra
 # escuadra
 # escuadra
