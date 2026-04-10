@@ -3,7 +3,7 @@
 Aplicación **web** que funciona como área reservada para el **Supremo Consejo Grado 33° para la República Argentina**. Incluye:
 
 - **App web** (Expo + React Native Web): área reservada para miembros y panel de administración.
-- **API REST** (Node/Express + Supabase) en la carpeta `server/`: login, CRUD de cuerpos, hermanos, grupos, otros orientes (misma lógica que el sistema PHP viejo). En la raíz, `api/index.js` es solo el **punto de entrada serverless** para Vercel.
+- **API REST** (Node/Express + Supabase) en la carpeta `server/`: login, CRUD de cuerpos, hermanos, grupos, otros orientes (misma lógica que el sistema PHP viejo). En la raíz, `api/[[...path]].js` es el **punto de entrada serverless** (catch-all) para Vercel.
 
 La funcionalidad se basó en el sistema PHP existente en `area-reservada` (cuerpos, miembros, trabajos, otros orientes, biblioteca, secretaría, tesorería, trámites). Ver `PLAN-SCG33.md` para el plan detallado.
 
@@ -76,6 +76,7 @@ Genera la salida estática en `dist/`. Podés desplegarla en cualquier hosting e
 - **Expo Router** – navegación por archivos
 - **AsyncStorage** – guardado del token/sesión (localStorage en web)
 - **TypeScript**
+# escuadra
 # escuadra
 # escuadra
 # escuadra
