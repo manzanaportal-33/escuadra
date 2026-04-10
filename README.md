@@ -79,3 +79,4 @@ Genera la salida estática en `dist/`. Podés desplegarla en cualquier hosting e
 # escuadra
 # escuadra
 # escuadra
+# escuadra
