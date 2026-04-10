@@ -3,7 +3,7 @@
 Aplicación **web** que funciona como área reservada para el **Supremo Consejo Grado 33° para la República Argentina**. Incluye:
 
 - **App web** (Expo + React Native Web): área reservada para miembros y panel de administración.
-- **API REST** (Node/Express + Supabase) en la carpeta `server/`: login, CRUD de cuerpos, hermanos, grupos, otros orientes (misma lógica que el sistema PHP viejo). En la raíz, `api/index.js` reexporta la app Express para Vercel (sin `serverless-http`; Vercel la ejecuta nativamente). Los rewrites en `vercel.json` mandan todo `/api` y `/api/*` ahí.
+- **API REST** (Node/Express + Supabase) en la carpeta `server/`: login, CRUD de cuerpos, hermanos, grupos, otros orientes (misma lógica que el sistema PHP viejo). En Vercel, el `npm run build` genera **`.vercel/output`** (Build Output API): estáticos en `static/` y la API en `functions/api.func/` (Express). No uses carpeta `api/` en la raíz; el enrutamiento sale de `config.json` dentro de ese output.
 
 La funcionalidad se basó en el sistema PHP existente en `area-reservada` (cuerpos, miembros, trabajos, otros orientes, biblioteca, secretaría, tesorería, trámites). Ver `PLAN-SCG33.md` para el plan detallado.
 
@@ -48,7 +48,6 @@ O desde la raíz: `npm run dev:api`. Para levantar API y web a la vez: `npm run 
 
 - **`app/`** – Código de la app (pantallas, navegación, auth).
 - **`server/`** – Backend Node/Express con **Supabase** (auth + base de datos). Ver `server/README.md`.
-- **`api/`** – Solo `index.js` para desplegar la API en Vercel (no es el código principal).
 - **`PLAN-SCG33.md`** – Análisis del sistema viejo y plan del nuevo (admin + miembros + web).
 
 ## Conectar la app con la API
@@ -76,6 +75,7 @@ Genera `dist/` y copia a `public/` (para Vercel: estáticos en `public/`, API en
 - **Expo Router** – navegación por archivos
 - **AsyncStorage** – guardado del token/sesión (localStorage en web)
 - **TypeScript**
+# escuadra
 # escuadra
 # escuadra
 # escuadra
