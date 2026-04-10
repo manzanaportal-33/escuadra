@@ -76,3 +76,4 @@ Genera la salida estática en `dist/`. Podés desplegarla en cualquier hosting e
 - **AsyncStorage** – guardado del token/sesión (localStorage en web)
 - **TypeScript**
 # escuadra
+# escuadra
