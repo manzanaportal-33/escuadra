@@ -32,6 +32,12 @@ const funcDir = join(outRoot, 'functions', 'api.func');
 mkdirSync(funcDir, { recursive: true });
 cpSync(serverSrc, join(funcDir, 'server'), { recursive: true });
 
+// Sin esto, Node trata serve.js como CJS y falla al parsear `import` → 500 en Vercel.
+writeFileSync(
+  join(funcDir, 'package.json'),
+  JSON.stringify({ name: 'escuadra-api-func', private: true, type: 'module' }, null, 2) + '\n',
+);
+
 writeFileSync(
   join(funcDir, 'serve.js'),
   `import { app } from './server/src/app.js';
@@ -43,7 +49,7 @@ writeFileSync(
   join(funcDir, '.vc-config.json'),
   JSON.stringify(
     {
-      runtime: 'nodejs22.x',
+      runtime: 'nodejs20.x',
       handler: 'serve.js',
       launcherType: 'Nodejs',
       shouldAddHelpers: true,

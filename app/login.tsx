@@ -14,6 +14,12 @@ import {
 import { router } from 'expo-router';
 import { useAuth } from '@/context/AuthContext';
 import { getApiUrlForDisplay, apiPath } from '@/config/api';
+
+function isLocalWebHost(): boolean {
+  if (typeof window === 'undefined') return false;
+  const h = window.location.hostname;
+  return h === 'localhost' || h === '127.0.0.1' || h.endsWith('.local');
+}
 import { colors } from '@/theme/colors';
 import { INSTITUTION } from '@/theme/institution';
 
@@ -29,15 +35,32 @@ export default function LoginScreen() {
     if (Platform.OS !== 'web') return;
     let cancelled = false;
     setApiStatus('checking');
-    fetch(apiPath('/api/health'), { method: 'GET' })
-      .then((res) => {
+
+    const run = async () => {
+      const attempts = isLocalWebHost() ? 1 : 2;
+      for (let i = 0; i < attempts; i++) {
         if (cancelled) return;
-        setApiStatus(res.ok ? 'ok' : 'fail');
-      })
-      .catch(() => {
-        if (!cancelled) setApiStatus('fail');
-      });
-    return () => { cancelled = true; };
+        try {
+          const res = await fetch(apiPath('/api/health'), { method: 'GET', cache: 'no-store' });
+          if (cancelled) return;
+          if (res.ok) {
+            setApiStatus('ok');
+            return;
+          }
+        } catch {
+          /* siguiente intento (p. ej. cold start en Vercel) */
+        }
+        if (i < attempts - 1) {
+          await new Promise((r) => setTimeout(r, 2000));
+        }
+      }
+      if (!cancelled) setApiStatus('fail');
+    };
+
+    void run();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleLogin = async () => {
@@ -141,7 +164,10 @@ export default function LoginScreen() {
                   API {getApiUrlForDisplay()}:{' '}
                   {apiStatus === 'checking' && 'Comprobando…'}
                   {apiStatus === 'ok' && 'Conectada'}
-                  {apiStatus === 'fail' && 'No responde. Ejecutá: npm run dev:api'}
+                  {apiStatus === 'fail' &&
+                    (isLocalWebHost()
+                      ? 'No responde. En otra terminal: npm run dev:api'
+                      : 'No responde. Esperá unos segundos y recargá; si sigue, revisá Vercel (Functions / logs).')}
                 </Text>
               )}
             </View>

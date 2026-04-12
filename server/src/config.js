@@ -28,21 +28,20 @@ export const config = {
   },
 };
 
-// Comprobar que las variables necesarias existan al arrancar
+/**
+ * Comprueba variables críticas. En serverless (Vercel) no hay server/.env: hay que definir
+ * las mismas claves en Project → Settings → Environment Variables.
+ */
 export function checkEnv() {
   if (!config.supabase.url || !config.supabase.serviceRoleKey) {
-    console.error('\n❌ Faltan variables de entorno.');
-    console.error('   La app lee el archivo server/.env (no .env.example).');
-    console.error('   Hacé una copia y completá con tus datos de Supabase:\n');
-    console.error('   cp .env.example .env');
-    console.error('   # Luego editá server/.env y poné SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY\n');
-    process.exit(1);
+    throw new Error(
+      'Faltan SUPABASE_URL o SUPABASE_SERVICE_ROLE_KEY. En local: server/.env. En Vercel: Project → Settings → Environment Variables (Production) y Redeploy.',
+    );
   }
   if (config.supabase.url.includes('tu-proyecto') || config.supabase.serviceRoleKey === 'tu-service-role-key') {
-    console.error('\n❌ .env tiene valores de ejemplo. Editá el archivo server/.env (no .env.example)');
-    console.error('   y reemplazá SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY con los de tu proyecto.');
-    console.error('   En Supabase: Settings → API → Project URL y service_role key.\n');
-    process.exit(1);
+    throw new Error(
+      'SUPABASE_* tienen valores de ejemplo. Reemplazalos por los reales (Supabase → Settings → API).',
+    );
   }
   if (!config.supabase.anonKey) {
     console.warn('\n⚠️  SUPABASE_ANON_KEY no está en .env. El login usará un cliente efímero;');

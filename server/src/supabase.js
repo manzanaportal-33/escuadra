@@ -1,11 +1,22 @@
 import { createClient } from '@supabase/supabase-js';
 import { config } from './config.js';
 
+function assertSupabaseConfig() {
+  const url = config.supabase.url?.trim();
+  const key = config.supabase.serviceRoleKey?.trim();
+  if (!url || !key) {
+    throw new Error(
+      'Supabase: faltan SUPABASE_URL o SUPABASE_SERVICE_ROLE_KEY. En Vercel cargalas en Environment Variables y redeploy.',
+    );
+  }
+}
+
 /**
  * Cliente con **service_role** solo para DB, Storage y Auth Admin.
  * No usar aquí `signInWithPassword`: dejaría sesión de usuario y PostgREST aplicaría RLS
  * (con clave anon verías solo tu propio perfil en listados como GET /api/users).
  */
+assertSupabaseConfig();
 export const supabase = createClient(config.supabase.url, config.supabase.serviceRoleKey, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
