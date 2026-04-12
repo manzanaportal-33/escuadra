@@ -32,6 +32,13 @@ const funcDir = join(outRoot, 'functions', 'api.func');
 mkdirSync(funcDir, { recursive: true });
 cpSync(serverSrc, join(funcDir, 'server'), { recursive: true });
 
+/** Resumen estado de cuentas: tesorería lee data/resumen_estado_cuentas.json (ruta relativa a la raíz del paquete). */
+const dataDir = join(root, 'data');
+if (existsSync(dataDir)) {
+  cpSync(dataDir, join(funcDir, 'data'), { recursive: true });
+  console.log('vercel-build-output: copiado data/ → api.func/data/');
+}
+
 // Sin esto, Node trata serve.js como CJS y falla al parsear `import` → 500 en Vercel.
 writeFileSync(
   join(funcDir, 'package.json'),

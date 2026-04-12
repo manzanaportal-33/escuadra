@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator, RefreshControl, Platform } from 'react-native';
 import { useAuth } from '@/context/AuthContext';
 import { apiPath } from '@/config/api';
 import { colors } from '@/theme/colors';
@@ -13,6 +13,11 @@ type ResumenPayload = ResumenHeaderFields & {
   sheet?: string;
   cuerpos?: CuerpoResumen[];
 };
+
+function isLocalHost(): boolean {
+  const h = window.location.hostname;
+  return h === 'localhost' || h === '127.0.0.1' || h.endsWith('.local');
+}
 
 export default function ResumenEstadoCuentasScreen() {
   const { fetchWithAuth } = useAuth();
@@ -69,10 +74,19 @@ export default function ResumenEstadoCuentasScreen() {
         }
       >
         <Text style={styles.errorText}>{error}</Text>
-        <Text style={styles.hint}>
-          Raíz del repo: python3 scripts/parse_resumen.py &quot;…xlsx&quot;. Desde carpeta api: npm run parse:resumen --
-          &quot;…xlsx&quot;
-        </Text>
+        {Platform.OS === 'web' && typeof window !== 'undefined' && isLocalHost() ? (
+          <Text style={styles.hint}>
+            En tu máquina: generá <Text style={styles.mono}>data/resumen_estado_cuentas.json</Text> con{' '}
+            <Text style={styles.mono}>python3 scripts/parse_resumen.py &quot;…xlsx&quot;</Text> o{' '}
+            <Text style={styles.mono}>{'cd server && npm run parse:resumen -- "…xlsx"'}</Text>.
+            Commiteá ese archivo y redeploy para verlo en producción.
+          </Text>
+        ) : (
+          <Text style={styles.hint}>
+            El resumen se sirve desde el archivo <Text style={styles.mono}>data/resumen_estado_cuentas.json</Text> en el
+            repositorio. Generalo en tu PC, agregalo al repo con git y volvé a publicar en Vercel.
+          </Text>
+        )}
       </ScrollView>
     );
   }
@@ -110,4 +124,5 @@ const styles = StyleSheet.create({
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background },
   errorText: { color: '#e57373', fontSize: 15, marginBottom: 12 },
   hint: { fontSize: 13, color: colors.textSecondary, lineHeight: 20 },
+  mono: { fontFamily: Platform.select({ web: 'ui-monospace, monospace', default: undefined }) },
 });
