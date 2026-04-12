@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Escuadra",
+    "slug": "escuadra-app",
+    "version": "1.0.0",
+    "platforms": ["web"],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "escuadra",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1b2e"
+    },
+    "web": {
+      "name": "Escuadra - Área reservada",
+      "shortName": "Escuadra",
+      "description": "Área reservada del Supremo Consejo Grado 33°"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}

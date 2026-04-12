@@ -1,0 +1,46 @@
+i# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+public/
+.vercel/output/
+web-build/
+
+# Native
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# Debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# Datos generados (planilla LISTA_HH → scripts/parse_lista_hh.py)
+data/lista_hh_import.json
+
+# Local env
+.env
+.env.local
+.env.*.local
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

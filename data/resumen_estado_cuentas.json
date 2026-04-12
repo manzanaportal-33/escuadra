@@ -1,0 +1,972 @@
+{
+  "source": "/Users/sebag/Documents/ESTADO DE CUENTAS - 02-03-26.xlsx",
+  "sheet": "RESUMEN",
+  "excel_date_serial": 46083.0,
+  "fecha_corte": "2026-03-02",
+  "indicadores": [
+    {
+      "label": "Total",
+      "value": -2776100.07
+    },
+    {
+      "label": "Saldo Flotante a la fecha",
+      "value": 0.0
+    },
+    {
+      "label": "Deuda de los Cuerpos",
+      "value": -10971232.0
+    },
+    {
+      "label": "Total Capitantes",
+      "value": 1687.0
+    },
+    {
+      "label": "Estimado ingresos por mes",
+      "value": 13346000.0
+    },
+    {
+      "label": "Total Escocistas",
+      "value": 1730.0
+    },
+    {
+      "label": "Total Grados 4",
+      "value": 508.0
+    },
+    {
+      "label": "Total Grados 9",
+      "value": 147.0
+    },
+    {
+      "label": "Total Grados 14",
+      "value": 149.0
+    },
+    {
+      "label": "Total Grados 18",
+      "value": 147.0
+    },
+    {
+      "label": "Total Grados 19",
+      "value": 149.0
+    },
+    {
+      "label": "Total Grados 24",
+      "value": 231.0
+    },
+    {
+      "label": "Total Grados 30",
+      "value": 105.0
+    },
+    {
+      "label": "Total Grados 31",
+      "value": 62.0
+    },
+    {
+      "label": "Total Grados 32",
+      "value": 37.0
+    },
+    {
+      "label": "Total Grados 33",
+      "value": 72.0
+    }
+  ],
+  "totales_por_tipo": [
+    {
+      "label": "Total Cuerpos",
+      "value": 109.0
+    },
+    {
+      "label": "Logias",
+      "value": 45.0
+    },
+    {
+      "label": "Capítulos",
+      "value": 35.0
+    },
+    {
+      "label": "Areópagos",
+      "value": 15.0
+    },
+    {
+      "label": "Consistorios",
+      "value": 9.0
+    },
+    {
+      "label": "Cámaras 33º",
+      "value": 5.0
+    }
+  ],
+  "cuerpos": [
+    {
+      "orden": 1,
+      "nombre": "LP04 CATARATAS DEL IGUAZU",
+      "localidad": "Misiones",
+      "saldo": -29800.0,
+      "capitantes": 9.0,
+      "capita_mensual": 63000.0
+    },
+    {
+      "orden": 2,
+      "nombre": "LP06 LUZ",
+      "localidad": "Mendoza",
+      "saldo": -91000.0,
+      "capitantes": 13.0,
+      "capita_mensual": 91000.0
+    },
+    {
+      "orden": 3,
+      "nombre": "LP12 RESPLANDOR",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": -70000.0,
+      "capitantes": 30.0,
+      "capita_mensual": 300000.0
+    },
+    {
+      "orden": 4,
+      "nombre": "LP13 OSIRIS",
+      "localidad": "Pergamino",
+      "saldo": -270000.0,
+      "capitantes": 10.0,
+      "capita_mensual": 70000.0
+    },
+    {
+      "orden": 5,
+      "nombre": "LP14 CONCORDIA",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": -346000.0,
+      "capitantes": 28.0,
+      "capita_mensual": 280000.0
+    },
+    {
+      "orden": 6,
+      "nombre": "LP23 LUMEN",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": 43554.0,
+      "capitantes": 36.0,
+      "capita_mensual": 360000.0
+    },
+    {
+      "orden": 7,
+      "nombre": "LP26 DEL PRONUNCIAMIENTO",
+      "localidad": "Concordia",
+      "saldo": -70000.0,
+      "capitantes": 10.0,
+      "capita_mensual": 70000.0
+    },
+    {
+      "orden": 8,
+      "nombre": "LP30 HERMES TRISMEGISTO",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": 20000.0,
+      "capitantes": 42.0,
+      "capita_mensual": 420000.0
+    },
+    {
+      "orden": 9,
+      "nombre": "LP31 FRATERNIDAD",
+      "localidad": "La Plata",
+      "saldo": 37760.0,
+      "capitantes": 15.0,
+      "capita_mensual": 105000.0
+    },
+    {
+      "orden": 10,
+      "nombre": "LP33 MERCEDARIO",
+      "localidad": "L.·.P.·. Mercedario N° 33",
+      "saldo": -178000.0,
+      "capitantes": 9.0,
+      "capita_mensual": 63000.0
+    },
+    {
+      "orden": 11,
+      "nombre": "LP38 CABALLEROS TEUTONES",
+      "localidad": "Villa General Belgrano",
+      "saldo": 0.0,
+      "capitantes": 16.0,
+      "capita_mensual": 113000.0
+    },
+    {
+      "orden": 12,
+      "nombre": "LP39 UNION DEL NORTE",
+      "localidad": "Jujuy",
+      "saldo": -208560.0,
+      "capitantes": 31.0,
+      "capita_mensual": 217000.0
+    },
+    {
+      "orden": 13,
+      "nombre": "LP44 ESTRELLA DEL NORTE",
+      "localidad": "Formosa",
+      "saldo": -513180.0,
+      "capitantes": 24.0,
+      "capita_mensual": 168000.0
+    },
+    {
+      "orden": 14,
+      "nombre": "LP45 DEL TUCUMAN",
+      "localidad": "Tucumán",
+      "saldo": 53000.0,
+      "capitantes": 21.0,
+      "capita_mensual": 147000.0
+    },
+    {
+      "orden": 15,
+      "nombre": "LP46 ESTOICOS DEL SUR",
+      "localidad": "Comodoro Rivadavia",
+      "saldo": -98000.0,
+      "capitantes": 14.0,
+      "capita_mensual": 98000.0
+    },
+    {
+      "orden": 16,
+      "nombre": "LP47 AUSTRALIS HOMINIS",
+      "localidad": "Ushuaia",
+      "saldo": -156000.0,
+      "capitantes": 9.0,
+      "capita_mensual": 68000.0
+    },
+    {
+      "orden": 17,
+      "nombre": "LP48 SANTIAGO DEL ESTERO",
+      "localidad": "Santiago del Estero",
+      "saldo": -238000.0,
+      "capitantes": 17.0,
+      "capita_mensual": 119000.0
+    },
+    {
+      "orden": 18,
+      "nombre": "LP50 SANTIAGO DERQUI",
+      "localidad": "San Nicolás",
+      "saldo": -79000.0,
+      "capitantes": 7.0,
+      "capita_mensual": 49000.0
+    },
+    {
+      "orden": 19,
+      "nombre": "LP51 MATEMATICOS DE TEON",
+      "localidad": "San Rafael",
+      "saldo": 115215.0,
+      "capitantes": 10.0,
+      "capita_mensual": 70000.0
+    },
+    {
+      "orden": 20,
+      "nombre": "LP52 POSTA DE YATASTO",
+      "localidad": "Salta",
+      "saldo": -64000.0,
+      "capitantes": 12.0,
+      "capita_mensual": 84000.0
+    },
+    {
+      "orden": 21,
+      "nombre": "LP53 SAN MARTIN",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": 80000.0,
+      "capitantes": 30.0,
+      "capita_mensual": 210000.0
+    },
+    {
+      "orden": 22,
+      "nombre": "LP54 LA FRATERNIDAD 1877",
+      "localidad": "Concepción del Uruguay",
+      "saldo": 70000.0,
+      "capitantes": 9.0,
+      "capita_mensual": 63000.0
+    },
+    {
+      "orden": 23,
+      "nombre": "LP55 SIMON BOLIVAR",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": 264000.0,
+      "capitantes": 10.0,
+      "capita_mensual": 100000.0
+    },
+    {
+      "orden": 24,
+      "nombre": "LP56 CABALLEROS DE LA ROSA",
+      "localidad": "Rio Gallegos",
+      "saldo": -28000.0,
+      "capitantes": 4.0,
+      "capita_mensual": 28000.0
+    },
+    {
+      "orden": 25,
+      "nombre": "LP57 ESTRELLA DEL PILAR",
+      "localidad": "Pilar",
+      "saldo": -105000.0,
+      "capitantes": 15.0,
+      "capita_mensual": 105000.0
+    },
+    {
+      "orden": 26,
+      "nombre": "LP59 AMAUTA",
+      "localidad": "Valle Viejo",
+      "saldo": -243000.0,
+      "capitantes": 13.0,
+      "capita_mensual": 91000.0
+    },
+    {
+      "orden": 27,
+      "nombre": "LP62 HIJOS DEL SILENCIO",
+      "localidad": "Neuquén",
+      "saldo": 93000.0,
+      "capitantes": 19.0,
+      "capita_mensual": 133000.0
+    },
+    {
+      "orden": 28,
+      "nombre": "LP64 ESTRELLA DEL SUD",
+      "localidad": "Bahía Blanca",
+      "saldo": -112000.0,
+      "capitantes": 14.0,
+      "capita_mensual": 98000.0
+    },
+    {
+      "orden": 29,
+      "nombre": "LP65 DELTA LUMINOSO",
+      "localidad": "San Luis",
+      "saldo": 17100.0,
+      "capitantes": 9.0,
+      "capita_mensual": 63000.0
+    },
+    {
+      "orden": 30,
+      "nombre": "LP66 SIEMPRE LIBRES",
+      "localidad": "Ituzaingó",
+      "saldo": 0.0,
+      "capitantes": 10.0,
+      "capita_mensual": 70000.0
+    },
+    {
+      "orden": 31,
+      "nombre": "LP67 UNION REPUBLICANA",
+      "localidad": "Rosario",
+      "saldo": -252000.0,
+      "capitantes": 12.0,
+      "capita_mensual": 84000.0
+    },
+    {
+      "orden": 32,
+      "nombre": "LP68 FRANCISCO DE MIRANDA",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": 343000.0,
+      "capitantes": 19.0,
+      "capita_mensual": 133000.0
+    },
+    {
+      "orden": 33,
+      "nombre": "LP69 F.O.R.J.A.",
+      "localidad": "Remedios de Escalada",
+      "saldo": -91000.0,
+      "capitantes": 13.0,
+      "capita_mensual": 91000.0
+    },
+    {
+      "orden": 34,
+      "nombre": "LP71 PACIENCIA",
+      "localidad": "Mar del Plata",
+      "saldo": -110000.0,
+      "capitantes": 10.0,
+      "capita_mensual": 70000.0
+    },
+    {
+      "orden": 35,
+      "nombre": "LP72 GENESIS",
+      "localidad": "Córdoba",
+      "saldo": 80000.0,
+      "capitantes": 15.0,
+      "capita_mensual": 105000.0
+    },
+    {
+      "orden": 36,
+      "nombre": "LP73 GIUSEPPE MAZZINI",
+      "localidad": "Lomas de Zamora",
+      "saldo": -161000.0,
+      "capitantes": 23.0,
+      "capita_mensual": 161000.0
+    },
+    {
+      "orden": 37,
+      "nombre": "LP74 OBREROS DE LA PIEDRA",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": -118700.0,
+      "capitantes": 17.0,
+      "capita_mensual": 119000.0
+    },
+    {
+      "orden": 38,
+      "nombre": "LP75 DEMOCRACIA",
+      "localidad": "Mendoza",
+      "saldo": -2000.0,
+      "capitantes": 8.0,
+      "capita_mensual": 56000.0
+    },
+    {
+      "orden": 39,
+      "nombre": "LP76 ACACIA DE LA PATAGONIA",
+      "localidad": "Bariloche",
+      "saldo": -48000.0,
+      "capitantes": 7.0,
+      "capita_mensual": 49000.0
+    },
+    {
+      "orden": 40,
+      "nombre": "LP77 EL OLIVO",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": -104200.0,
+      "capitantes": 16.0,
+      "capita_mensual": 112000.0
+    },
+    {
+      "orden": 41,
+      "nombre": "LP78 LLOYD AP IWAN",
+      "localidad": "Rawson",
+      "saldo": 0.0,
+      "capitantes": 0.0,
+      "capita_mensual": 0.0
+    },
+    {
+      "orden": 42,
+      "nombre": "LP79 SAN MARTIN",
+      "localidad": "Posadas",
+      "saldo": -270000.0,
+      "capitantes": 10.0,
+      "capita_mensual": 70000.0
+    },
+    {
+      "orden": 43,
+      "nombre": "LP80 TARAGUI",
+      "localidad": "Corrientes",
+      "saldo": -332000.0,
+      "capitantes": 12.0,
+      "capita_mensual": 84000.0
+    },
+    {
+      "orden": 44,
+      "nombre": "LP81 ALBERT PIKE",
+      "localidad": "Virtual",
+      "saldo": 114000.0,
+      "capitantes": 33.0,
+      "capita_mensual": 231000.0
+    },
+    {
+      "orden": 45,
+      "nombre": "LP82 JC CORDEU",
+      "localidad": "Balcarce",
+      "saldo": -126000.0,
+      "capitantes": 18.0,
+      "capita_mensual": 126000.0
+    },
+    {
+      "orden": 46,
+      "nombre": "CAP01 ANIBAL GUARIGLIA",
+      "localidad": "Rosario",
+      "saldo": -154000.0,
+      "capitantes": 22.0,
+      "capita_mensual": 154000.0
+    },
+    {
+      "orden": 47,
+      "nombre": "CAP02 ESTRELLA DE TUCUMAN",
+      "localidad": "San Miguel de Tucumán",
+      "saldo": 0.0,
+      "capitantes": 0.0,
+      "capita_mensual": 0.0
+    },
+    {
+      "orden": 48,
+      "nombre": "CAP03 CONCORDIA",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": 400945.0,
+      "capitantes": 27.0,
+      "capita_mensual": 270000.0
+    },
+    {
+      "orden": 49,
+      "nombre": "CAP06 LUZ",
+      "localidad": "Mendoza",
+      "saldo": -98000.0,
+      "capitantes": 14.0,
+      "capita_mensual": 98000.0
+    },
+    {
+      "orden": 50,
+      "nombre": "CAP07 LA PAZ",
+      "localidad": "Lomas de Zamora",
+      "saldo": 123000.0,
+      "capitantes": 11.0,
+      "capita_mensual": 77000.0
+    },
+    {
+      "orden": 51,
+      "nombre": "CAP08 SAN MARTIN",
+      "localidad": "Olivos",
+      "saldo": -217000.0,
+      "capitantes": 31.0,
+      "capita_mensual": 217000.0
+    },
+    {
+      "orden": 52,
+      "nombre": "CAP13 RAMON MADARIAGA",
+      "localidad": "Posadas",
+      "saldo": -114000.0,
+      "capitantes": 16.0,
+      "capita_mensual": 114000.0
+    },
+    {
+      "orden": 53,
+      "nombre": "CAP16 FABIAN ONSARI",
+      "localidad": "Villa Dominico",
+      "saldo": -248000.0,
+      "capitantes": 16.0,
+      "capita_mensual": 112000.0
+    },
+    {
+      "orden": 54,
+      "nombre": "CAP17 GRAN REUNION AMERICANA",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": 224102.93,
+      "capitantes": 16.0,
+      "capita_mensual": 160000.0
+    },
+    {
+      "orden": 55,
+      "nombre": "CAP18 PUEYRREDON",
+      "localidad": "Mar del Plata",
+      "saldo": -401000.0,
+      "capitantes": 45.0,
+      "capita_mensual": 315000.0
+    },
+    {
+      "orden": 56,
+      "nombre": "CAP20 SARMIENTO",
+      "localidad": "Venado Tuerto",
+      "saldo": -119000.0,
+      "capitantes": 17.0,
+      "capita_mensual": 119000.0
+    },
+    {
+      "orden": 57,
+      "nombre": "CAP21 MAGISTER",
+      "localidad": "Paraná",
+      "saldo": 232875.0,
+      "capitantes": 7.0,
+      "capita_mensual": 49000.0
+    },
+    {
+      "orden": 58,
+      "nombre": "CAP34 UNION AMERICANA",
+      "localidad": "Salta",
+      "saldo": -11000.0,
+      "capitantes": 1.0,
+      "capita_mensual": 7000.0
+    },
+    {
+      "orden": 59,
+      "nombre": "CAP37 BELGRANO",
+      "localidad": "Resistencia",
+      "saldo": 520.0,
+      "capitantes": 20.0,
+      "capita_mensual": 141000.0
+    },
+    {
+      "orden": 60,
+      "nombre": "CAP38 PIEDAD Y UNION",
+      "localidad": "Córdoba",
+      "saldo": -241000.0,
+      "capitantes": 34.0,
+      "capita_mensual": 241000.0
+    },
+    {
+      "orden": 61,
+      "nombre": "CAP39 GENARO BERON DE ASTRADA",
+      "localidad": "Corrientes",
+      "saldo": -110000.0,
+      "capitantes": 15.0,
+      "capita_mensual": 110000.0
+    },
+    {
+      "orden": 62,
+      "nombre": "CAP40 RAMON TRAYER",
+      "localidad": "Paso de los Libres",
+      "saldo": -231000.0,
+      "capitantes": 26.0,
+      "capita_mensual": 191000.0
+    },
+    {
+      "orden": 63,
+      "nombre": "CAP41 HERMES TRISMEGISTO",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": -170000.0,
+      "capitantes": 17.0,
+      "capita_mensual": 170000.0
+    },
+    {
+      "orden": 64,
+      "nombre": "CAP44 NICASIO OROÑO",
+      "localidad": "Santa Fe",
+      "saldo": 179000.0,
+      "capitantes": 63.0,
+      "capita_mensual": 441000.0
+    },
+    {
+      "orden": 65,
+      "nombre": "CAP45 UNION Y VIRTUD",
+      "localidad": "Córdoba",
+      "saldo": -160000.0,
+      "capitantes": 35.0,
+      "capita_mensual": 246000.0
+    },
+    {
+      "orden": 66,
+      "nombre": "CAP46 CONSTRUCTORES",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": -306800.0,
+      "capitantes": 26.0,
+      "capita_mensual": 260000.0
+    },
+    {
+      "orden": 67,
+      "nombre": "CAP47 EGREGOR PATAGONICO",
+      "localidad": "San Carlos de Bariloche",
+      "saldo": -255200.0,
+      "capitantes": 17.0,
+      "capita_mensual": 119000.0
+    },
+    {
+      "orden": 68,
+      "nombre": "CAP48 CORDOBA LIBRE",
+      "localidad": "Córdoba",
+      "saldo": 64000.0,
+      "capitantes": 9.0,
+      "capita_mensual": 64000.0
+    },
+    {
+      "orden": 69,
+      "nombre": "CAP49 ALBERT PIKE",
+      "localidad": "Bella Vista",
+      "saldo": -67416.0,
+      "capitantes": 12.0,
+      "capita_mensual": 84000.0
+    },
+    {
+      "orden": 70,
+      "nombre": "CAP50 JOSE PEREZ",
+      "localidad": "San Salvador de Jujuy",
+      "saldo": -185000.0,
+      "capitantes": 1.0,
+      "capita_mensual": 7000.0
+    },
+    {
+      "orden": 71,
+      "nombre": "CAP51 TRES DE FEBRERO",
+      "localidad": "El Zanjón",
+      "saldo": -56000.0,
+      "capitantes": 1.0,
+      "capita_mensual": 7000.0
+    },
+    {
+      "orden": 72,
+      "nombre": "CAP52 FENIX",
+      "localidad": "La Plata",
+      "saldo": 564800.0,
+      "capitantes": 5.0,
+      "capita_mensual": 35000.0
+    },
+    {
+      "orden": 73,
+      "nombre": "CAP53 PROVINCIAS UNIDAS",
+      "localidad": "Rio Gallegos - Virtual",
+      "saldo": 306800.0,
+      "capitantes": 16.0,
+      "capita_mensual": 112000.0
+    },
+    {
+      "orden": 74,
+      "nombre": "CAP54 JOAQUIN V. GONZALEZ",
+      "localidad": "La Rioja y Catamarca",
+      "saldo": -402000.0,
+      "capitantes": 9.0,
+      "capita_mensual": 66000.0
+    },
+    {
+      "orden": 75,
+      "nombre": "CAP55 HEREDOM DE ALEJANDRIA",
+      "localidad": "San Rafael",
+      "saldo": -57000.0,
+      "capitantes": 8.0,
+      "capita_mensual": 57000.0
+    },
+    {
+      "orden": 76,
+      "nombre": "CAP56 EDUARDO HOLMBERG",
+      "localidad": "Ituzaingó",
+      "saldo": 39000.0,
+      "capitantes": 25.0,
+      "capita_mensual": 175000.0
+    },
+    {
+      "orden": 77,
+      "nombre": "CAP57 PACIENCIA",
+      "localidad": "Mar del Plata",
+      "saldo": 78000.0,
+      "capitantes": 5.0,
+      "capita_mensual": 35000.0
+    },
+    {
+      "orden": 78,
+      "nombre": "CAP58 MANUEL BELGRANO",
+      "localidad": "Pilar",
+      "saldo": 450000.0,
+      "capitantes": 2.0,
+      "capita_mensual": 14000.0
+    },
+    {
+      "orden": 79,
+      "nombre": "CAP59 FONTANA",
+      "localidad": "Formosa",
+      "saldo": -8000.0,
+      "capitantes": 8.0,
+      "capita_mensual": 57000.0
+    },
+    {
+      "orden": 80,
+      "nombre": "CAP60 LUX INDEFICIENS",
+      "localidad": "San Fernando del Valle de Catamarca",
+      "saldo": 0.0,
+      "capitantes": 0.0,
+      "capita_mensual": 0.0
+    },
+    {
+      "orden": 81,
+      "nombre": "ARE01 DEL LITORAL",
+      "localidad": "Rosario",
+      "saldo": 385070.0,
+      "capitantes": 16.0,
+      "capita_mensual": 128000.0
+    },
+    {
+      "orden": 82,
+      "nombre": "ARE02 ZUÑIGA",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": 34000.0,
+      "capitantes": 40.0,
+      "capita_mensual": 400000.0
+    },
+    {
+      "orden": 83,
+      "nombre": "ARE04 JOSE HERNANDEZ",
+      "localidad": "Mendoza",
+      "saldo": -151000.0,
+      "capitantes": 19.0,
+      "capita_mensual": 151000.0
+    },
+    {
+      "orden": 84,
+      "nombre": "ARE05 ENTRERRIANO",
+      "localidad": "Paraná",
+      "saldo": -58860.0,
+      "capitantes": 1.0,
+      "capita_mensual": 8000.0
+    },
+    {
+      "orden": 85,
+      "nombre": "ARE06 DERQUI",
+      "localidad": "Córdoba",
+      "saldo": -152000.0,
+      "capitantes": 19.0,
+      "capita_mensual": 152000.0
+    },
+    {
+      "orden": 86,
+      "nombre": "ARE07 ALBERT PIKE",
+      "localidad": "Olivos",
+      "saldo": -216000.0,
+      "capitantes": 9.0,
+      "capita_mensual": 72000.0
+    },
+    {
+      "orden": 87,
+      "nombre": "ARE08 MITRE",
+      "localidad": "Mar del Plata",
+      "saldo": -143768.0,
+      "capitantes": 13.0,
+      "capita_mensual": 104000.0
+    },
+    {
+      "orden": 88,
+      "nombre": "ARE09 GRAN CHACO AUSTRAL",
+      "localidad": "Chaco - Formosa - Salta - Jujuy",
+      "saldo": 1748000.0,
+      "capitantes": 9.0,
+      "capita_mensual": 72000.0
+    },
+    {
+      "orden": 89,
+      "nombre": "ARE10 JOSE HERNANDEZ",
+      "localidad": "Corrientes - Misiones",
+      "saldo": 0.0,
+      "capitantes": 0.0,
+      "capita_mensual": 0.0
+    },
+    {
+      "orden": 90,
+      "nombre": "ARE11 SARMIENTO",
+      "localidad": "Lomas de Zamora",
+      "saldo": -200000.0,
+      "capitantes": 20.0,
+      "capita_mensual": 200000.0
+    },
+    {
+      "orden": 91,
+      "nombre": "ARE12 CABALLEROS DEL TEMPLE",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": 119000.0,
+      "capitantes": 42.0,
+      "capita_mensual": 420000.0
+    },
+    {
+      "orden": 92,
+      "nombre": "ARE13 DEL NOA",
+      "localidad": "Salta",
+      "saldo": 204000.0,
+      "capitantes": 9.0,
+      "capita_mensual": 72000.0
+    },
+    {
+      "orden": 93,
+      "nombre": "ARE14 LUX INDEFICIENS",
+      "localidad": "Santa Fe",
+      "saldo": -72000.0,
+      "capitantes": 9.0,
+      "capita_mensual": 72000.0
+    },
+    {
+      "orden": 94,
+      "nombre": "ARE15 SINERGIA",
+      "localidad": "Comodoro Rivadavia - Virtual",
+      "saldo": -304000.0,
+      "capitantes": 17.0,
+      "capita_mensual": 136000.0
+    },
+    {
+      "orden": 95,
+      "nombre": "ARE16 SARMIENTO",
+      "localidad": "Santiago del Estero",
+      "saldo": -462000.0,
+      "capitantes": 18.0,
+      "capita_mensual": 144000.0
+    },
+    {
+      "orden": 96,
+      "nombre": "CON01 BUENOS AIRES",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": 974640.0,
+      "capitantes": 45.0,
+      "capita_mensual": 450000.0
+    },
+    {
+      "orden": 97,
+      "nombre": "CON02 DEL LITORAL",
+      "localidad": "Rosario",
+      "saldo": -128000.0,
+      "capitantes": 8.0,
+      "capita_mensual": 64000.0
+    },
+    {
+      "orden": 98,
+      "nombre": "CON03 DEL PARANA",
+      "localidad": "Paraná",
+      "saldo": -100545.0,
+      "capitantes": 2.0,
+      "capita_mensual": 16000.0
+    },
+    {
+      "orden": 99,
+      "nombre": "CON04 LIBERTADOR",
+      "localidad": "Corrientes y Misiones",
+      "saldo": -31250.0,
+      "capitantes": 5.0,
+      "capita_mensual": 40000.0
+    },
+    {
+      "orden": 100,
+      "nombre": "CON05 ALBERT PIKE",
+      "localidad": "Resistencia",
+      "saldo": 0.0,
+      "capitantes": 0.0,
+      "capita_mensual": 0.0
+    },
+    {
+      "orden": 101,
+      "nombre": "CON06 URRUTIA G. SUEYRO",
+      "localidad": "Mar del Plata",
+      "saldo": 161000.0,
+      "capitantes": 7.0,
+      "capita_mensual": 56000.0
+    },
+    {
+      "orden": 102,
+      "nombre": "CON07 DE CUYO",
+      "localidad": "Mendoza",
+      "saldo": 194000.0,
+      "capitantes": 7.0,
+      "capita_mensual": 56000.0
+    },
+    {
+      "orden": 103,
+      "nombre": "CON08 DEL NOA",
+      "localidad": "Tucumán",
+      "saldo": -144000.0,
+      "capitantes": 9.0,
+      "capita_mensual": 72000.0
+    },
+    {
+      "orden": 104,
+      "nombre": "CON09 ALBERT PIKE",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": -230000.0,
+      "capitantes": 23.0,
+      "capita_mensual": 230000.0
+    },
+    {
+      "orden": 105,
+      "nombre": "GIG33 IGNACIO VITALE",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": -199953.0,
+      "capitantes": 18.0,
+      "capita_mensual": 180000.0
+    },
+    {
+      "orden": 106,
+      "nombre": "GIG33 URQUIZA",
+      "localidad": "Paraná",
+      "saldo": 0.0,
+      "capitantes": 0.0,
+      "capita_mensual": 0.0
+    },
+    {
+      "orden": 107,
+      "nombre": "GIG33 ALBERT PIKE 3",
+      "localidad": "Rosario",
+      "saldo": -242000.0,
+      "capitantes": 4.0,
+      "capita_mensual": 32000.0
+    },
+    {
+      "orden": 108,
+      "nombre": "GIG33 ALBERT PIKE 4",
+      "localidad": "Ciudad Autónoma de Buenos Aires",
+      "saldo": -10000.0,
+      "capitantes": 16.0,
+      "capita_mensual": 160000.0
+    },
+    {
+      "orden": 109,
+      "nombre": "GIG33 NACIONAL VIRTUAL 5",
+      "localidad": "Virtual",
+      "saldo": 381750.0,
+      "capitantes": 16.0,
+      "capita_mensual": 128000.0
+    }
+  ]
+}
