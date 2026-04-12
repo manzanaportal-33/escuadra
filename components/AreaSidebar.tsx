@@ -30,10 +30,13 @@ const TRAMITES_SUBMENU: { label: string; tipo: string }[] = [
   { label: 'Pase', tipo: 'pase' },
 ];
 
-const MENU_ITEMS_BASE: MenuItem[] = [
-  { label: 'Cuerpos', href: '/area/cuerpos', icon: 'business' },
-  { label: 'Tesorería', href: '/area/tesoreria', icon: 'wallet' },
-];
+/** Un solo «Cuerpos»: admin va a gestión; hermano a listado del área. */
+function menuItemsBase(isAdmin: boolean): MenuItem[] {
+  return [
+    { label: 'Cuerpos', href: isAdmin ? '/area/admin/cuerpos' : '/area/cuerpos', icon: 'business' },
+    { label: 'Tesorería', href: '/area/tesoreria', icon: 'wallet' },
+  ];
+}
 
 /** Solo hermanos: el admin gestiona contacto en «Mensajes (contacto)». */
 const MENU_ITEMS_CONTACTO_HERMANO: MenuItem[] = [
@@ -43,7 +46,6 @@ const MENU_ITEMS_CONTACTO_HERMANO: MenuItem[] = [
 
 const ADMIN_ITEMS: MenuItem[] = [
   { label: 'Hermanos', href: '/area/admin/hermanos', icon: 'people' },
-  { label: 'Cuerpos', href: '/area/admin/cuerpos', icon: 'business' },
   { label: 'Mensajes (contacto)', href: '/area/admin/contacto', icon: 'chatbubbles-outline' },
   { label: 'Solicitudes', href: '/area/admin/tramites', icon: 'document-text' },
   { label: 'Otros Orientes', href: '/area/admin/orientes', icon: 'globe' },
@@ -252,33 +254,33 @@ export function AreaSidebar() {
           )}
         </View>
 
-        {/* Trámites en línea con submenú */}
-        <View style={styles.menuGroup}>
-          <TouchableOpacity
-            style={[styles.item, isTramitesActive() && styles.itemActive]}
-            onPress={() => setTramitesOpen((o) => !o)}
-            activeOpacity={0.75}
-          >
-            <Ionicons
-              name="send"
-              size={20}
-              color={isTramitesActive() ? colors.primaryLight : colors.textSecondary}
-            />
-            <Text
-              style={[styles.itemLabel, isTramitesActive() && styles.itemLabelActive]}
-              numberOfLines={1}
+        {/* Trámites en línea (solo hermanos; el admin usa «Solicitudes») */}
+        {!isAdmin && (
+          <View style={styles.menuGroup}>
+            <TouchableOpacity
+              style={[styles.item, isTramitesActive() && styles.itemActive]}
+              onPress={() => setTramitesOpen((o) => !o)}
+              activeOpacity={0.75}
             >
-              Trámites en línea
-            </Text>
-            <Ionicons
-              name={tramitesOpen ? 'chevron-down' : 'chevron-forward'}
-              size={18}
-              color={colors.textSecondary}
-            />
-          </TouchableOpacity>
-          {tramitesOpen && (
-            <View style={styles.submenu}>
-              {!isAdmin && (
+              <Ionicons
+                name="send"
+                size={20}
+                color={isTramitesActive() ? colors.primaryLight : colors.textSecondary}
+              />
+              <Text
+                style={[styles.itemLabel, isTramitesActive() && styles.itemLabelActive]}
+                numberOfLines={1}
+              >
+                Trámites en línea
+              </Text>
+              <Ionicons
+                name={tramitesOpen ? 'chevron-down' : 'chevron-forward'}
+                size={18}
+                color={colors.textSecondary}
+              />
+            </TouchableOpacity>
+            {tramitesOpen && (
+              <View style={styles.submenu}>
                 <TouchableOpacity
                   style={[styles.subItem, isMisSolicitudesActive() && styles.subItemActive]}
                   onPress={() => router.push('/area/tramites/mis-solicitudes' as any)}
@@ -297,36 +299,36 @@ export function AreaSidebar() {
                     Mis Solicitudes
                   </Text>
                 </TouchableOpacity>
-              )}
-              {TRAMITES_SUBMENU.map((sub) => {
-                const active = isTramitesSubItemActive(sub.tipo);
-                return (
-                  <TouchableOpacity
-                    key={sub.tipo}
-                    style={[styles.subItem, active && styles.subItemActive]}
-                    onPress={() => router.push(`/area/tramites/nuevo/${sub.tipo}` as any)}
-                    activeOpacity={0.75}
-                  >
-                    <Ionicons
-                      name="ellipse"
-                      size={6}
-                      color={active ? colors.primaryLight : colors.borderLight}
-                      style={styles.subBullet}
-                    />
-                    <Text
-                      style={[styles.subItemLabel, active && styles.subItemLabelActive]}
-                      numberOfLines={2}
+                {TRAMITES_SUBMENU.map((sub) => {
+                  const active = isTramitesSubItemActive(sub.tipo);
+                  return (
+                    <TouchableOpacity
+                      key={sub.tipo}
+                      style={[styles.subItem, active && styles.subItemActive]}
+                      onPress={() => router.push(`/area/tramites/nuevo/${sub.tipo}` as any)}
+                      activeOpacity={0.75}
                     >
-                      {sub.label}
-                    </Text>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-          )}
-        </View>
+                      <Ionicons
+                        name="ellipse"
+                        size={6}
+                        color={active ? colors.primaryLight : colors.borderLight}
+                        style={styles.subBullet}
+                      />
+                      <Text
+                        style={[styles.subItemLabel, active && styles.subItemLabelActive]}
+                        numberOfLines={2}
+                      >
+                        {sub.label}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            )}
+          </View>
+        )}
 
-        {(isAdmin ? MENU_ITEMS_BASE : [...MENU_ITEMS_BASE, ...MENU_ITEMS_CONTACTO_HERMANO]).map((item) => {
+        {(isAdmin ? menuItemsBase(true) : [...menuItemsBase(false), ...MENU_ITEMS_CONTACTO_HERMANO]).map((item) => {
           const active = isActive(item.href);
           return (
             <TouchableOpacity
