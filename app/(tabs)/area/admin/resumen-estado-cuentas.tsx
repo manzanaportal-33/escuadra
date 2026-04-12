@@ -83,8 +83,10 @@ export default function ResumenEstadoCuentasScreen() {
           </Text>
         ) : (
           <Text style={styles.hint}>
-            El resumen se sirve desde el archivo <Text style={styles.mono}>data/resumen_estado_cuentas.json</Text> en el
-            repositorio. Generalo en tu PC, agregalo al repo con git y volvé a publicar en Vercel.
+            En el servidor (p. ej. Vercel) podés definir{' '}
+            <Text style={styles.mono}>RESUMEN_ESTADO_CUENTAS_GOOGLE_DRIVE_FILE_ID</Text> o{' '}
+            <Text style={styles.mono}>RESUMEN_ESTADO_CUENTAS_EXCEL_URL</Text> para leer el .xlsx desde Drive u otra URL.
+            Si no, el resumen sale de <Text style={styles.mono}>data/resumen_estado_cuentas.json</Text> en el repo.
           </Text>
         )}
       </ScrollView>

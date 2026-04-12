@@ -28,6 +28,24 @@ export function fmtNum(n: number | null | undefined, opts?: { maxFrac?: number }
   }).format(n);
 }
 
+/** Rutas locales, URLs o etiquetas tipo google-drive:id → solo nombre de archivo legible. */
+export function displaySourceFilename(raw: string): string {
+  const t = String(raw || '').trim();
+  if (!t) return '';
+  if (/^https?:\/\//i.test(t)) {
+    try {
+      const u = new URL(t);
+      const seg = u.pathname.split('/').filter(Boolean).pop();
+      if (seg) return decodeURIComponent(seg);
+    } catch {
+      /* seguir */
+    }
+  }
+  const norm = t.replace(/\\/g, '/');
+  const i = norm.lastIndexOf('/');
+  return i >= 0 ? norm.slice(i + 1) : t;
+}
+
 function isMontoLabel(label: string) {
   const l = label.toLowerCase();
   return (
@@ -78,7 +96,7 @@ export function ResumenEstadoCuentasBody({
       ) : null}
       {header.source ? (
         <Text style={styles.source} numberOfLines={2}>
-          Fuente: {header.source}
+          Fuente: {displaySourceFilename(header.source)}
         </Text>
       ) : null}
 

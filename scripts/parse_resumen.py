@@ -177,7 +177,7 @@ def main():
         )
 
     payload = {
-        "source": str(xlsx),
+        "source": xlsx.name,
         "sheet": "RESUMEN",
         "excel_date_serial": fecha_serial,
         "fecha_corte": fecha_corte,

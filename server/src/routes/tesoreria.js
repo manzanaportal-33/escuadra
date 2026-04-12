@@ -6,6 +6,11 @@ import { fileURLToPath } from 'url';
 import XLSX from 'xlsx';
 import { supabase } from '../supabase.js';
 import { authMiddleware, adminOnly } from '../middleware/auth.js';
+import { parseResumenEstadoCuentasFromBuffer } from '../lib/parseResumenEstadoCuentas.js';
+import {
+  fetchExcelBufferFromGoogleDrive,
+  fetchExcelBufferFromUrl,
+} from '../lib/fetchResumenExcel.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 /** JSON generado con scripts/parse_resumen.py (raíz del repo escuadra/data/) */
@@ -302,12 +307,25 @@ router.get('/archivo/:id', async (req, res) => {
 });
 
 /** Datos de la solapa RESUMEN del Excel de estado de cuentas (admin). */
-router.get('/admin/resumen-estado-cuentas', adminOnly, (req, res) => {
+router.get('/admin/resumen-estado-cuentas', adminOnly, async (req, res) => {
+  const excelUrl = process.env.RESUMEN_ESTADO_CUENTAS_EXCEL_URL?.trim();
+  const driveId = process.env.RESUMEN_ESTADO_CUENTAS_GOOGLE_DRIVE_FILE_ID?.trim();
+
   try {
+    if (excelUrl) {
+      const buf = await fetchExcelBufferFromUrl(excelUrl);
+      const payload = parseResumenEstadoCuentasFromBuffer(buf, excelUrl);
+      return res.json(payload);
+    }
+    if (driveId) {
+      const buf = await fetchExcelBufferFromGoogleDrive(driveId);
+      const payload = parseResumenEstadoCuentasFromBuffer(buf, `google-drive:${driveId}`);
+      return res.json(payload);
+    }
     if (!fs.existsSync(RESUMEN_ESTADO_CUENTAS_JSON)) {
       return res.status(404).json({
         error:
-          'No hay resumen cargado. Raíz del repo: python3 scripts/parse_resumen.py "/ruta/archivo.xlsx" — o desde api/: npm run parse:resumen -- "/ruta/archivo.xlsx"',
+          'No hay resumen cargado. Configurá en el servidor RESUMEN_ESTADO_CUENTAS_EXCEL_URL o RESUMEN_ESTADO_CUENTAS_GOOGLE_DRIVE_FILE_ID, o generá data/resumen_estado_cuentas.json con python3 scripts/parse_resumen.py',
       });
     }
     const raw = fs.readFileSync(RESUMEN_ESTADO_CUENTAS_JSON, 'utf8');
