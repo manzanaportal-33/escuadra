@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   View,
   Text,
@@ -13,13 +13,6 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 import { useAuth } from '@/context/AuthContext';
-import { getApiUrlForDisplay, apiPath } from '@/config/api';
-
-function isLocalWebHost(): boolean {
-  if (typeof window === 'undefined') return false;
-  const h = window.location.hostname;
-  return h === 'localhost' || h === '127.0.0.1' || h.endsWith('.local');
-}
 import { colors } from '@/theme/colors';
 import { INSTITUTION } from '@/theme/institution';
 
@@ -29,39 +22,6 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [apiStatus, setApiStatus] = useState<'checking' | 'ok' | 'fail' | null>(null);
-
-  useEffect(() => {
-    if (Platform.OS !== 'web') return;
-    let cancelled = false;
-    setApiStatus('checking');
-
-    const run = async () => {
-      const attempts = isLocalWebHost() ? 1 : 2;
-      for (let i = 0; i < attempts; i++) {
-        if (cancelled) return;
-        try {
-          const res = await fetch(apiPath('/api/health'), { method: 'GET', cache: 'no-store' });
-          if (cancelled) return;
-          if (res.ok) {
-            setApiStatus('ok');
-            return;
-          }
-        } catch {
-          /* siguiente intento (p. ej. cold start en Vercel) */
-        }
-        if (i < attempts - 1) {
-          await new Promise((r) => setTimeout(r, 2000));
-        }
-      }
-      if (!cancelled) setApiStatus('fail');
-    };
-
-    void run();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   const handleLogin = async () => {
     setError('');
@@ -158,18 +118,6 @@ export default function LoginScreen() {
                   Restablecer la contraseña
                 </Text>
               </TouchableOpacity>
-
-              {Platform.OS === 'web' && apiStatus !== null && (
-                <Text style={[styles.apiStatus, { color: colors.textMuted }]}>
-                  API {getApiUrlForDisplay()}:{' '}
-                  {apiStatus === 'checking' && 'Comprobando…'}
-                  {apiStatus === 'ok' && 'Conectada'}
-                  {apiStatus === 'fail' &&
-                    (isLocalWebHost()
-                      ? 'No responde. En otra terminal: npm run dev:api'
-                      : 'No responde. Esperá unos segundos y recargá; si sigue, revisá Vercel (Functions / logs).')}
-                </Text>
-              )}
             </View>
           </View>
 
@@ -289,11 +237,6 @@ const styles = StyleSheet.create({
   restoreLinkText: {
     fontSize: 14,
     fontWeight: '600',
-  },
-  apiStatus: {
-    marginTop: 20,
-    fontSize: 11,
-    textAlign: 'center',
   },
   footerName: {
     marginTop: 28,
