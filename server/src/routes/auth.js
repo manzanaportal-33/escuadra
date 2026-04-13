@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { login, forgotPassword, confirmResetPassword, refreshSession } from '../auth.js';
+import { logLoginAsync } from '../lib/accessLog.js';
 
 const router = Router();
 
@@ -14,6 +15,11 @@ router.post('/login', async (req, res) => {
     console.log('[API] Login rechazado:', msg);
     return res.status(401).json({ error: msg });
   }
+  logLoginAsync({
+    userId: result.data.user.id,
+    email: result.data.user.email,
+    req,
+  });
   res.json(result.data);
 });
 

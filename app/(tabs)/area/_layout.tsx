@@ -34,6 +34,7 @@ export default function AreaLayout() {
       <Stack.Screen name="tramites/mis-solicitudes" options={{ title: 'Mis Solicitudes', headerTitle: 'Mis Solicitudes' }} />
       <Stack.Screen name="tramites/nuevo/[tipo]" options={{ title: 'Nuevo trámite', headerTitle: 'Nuevo trámite' }} />
       <Stack.Screen name="admin/index" options={{ title: 'Administración', headerTitle: 'Administración' }} />
+      <Stack.Screen name="admin/accesos" options={{ title: 'Registro de accesos', headerTitle: 'Registro de accesos' }} />
       <Stack.Screen name="admin/hermanos" options={{ title: 'Hermanos', headerTitle: 'Hermanos' }} />
       <Stack.Screen name="admin/cuerpos" options={{ title: 'Cuerpos', headerTitle: 'Cuerpos' }} />
       <Stack.Screen name="admin/orientes" options={{ title: 'Otros Orientes', headerTitle: 'Otros Orientes' }} />

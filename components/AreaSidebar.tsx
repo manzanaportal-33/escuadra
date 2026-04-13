@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { usePathname, useRouter } from 'expo-router';
 import { useAuth } from '@/context/AuthContext';
@@ -44,6 +44,12 @@ const MENU_ITEMS_CONTACTO_HERMANO: MenuItem[] = [
   { label: 'Mis consultas', href: '/area/contacto/mis-mensajes', icon: 'inbox-outline' },
 ];
 
+const ADMIN_ITEM_ACCESOS: MenuItem = {
+  label: 'Registro de accesos',
+  href: '/area/admin/accesos',
+  icon: 'finger-print',
+};
+
 const ADMIN_ITEMS: MenuItem[] = [
   { label: 'Hermanos', href: '/area/admin/hermanos', icon: 'people' },
   { label: 'Mensajes (contacto)', href: '/area/admin/contacto', icon: 'chatbubbles-outline' },
@@ -68,6 +74,10 @@ export function AreaSidebar() {
   const router = useRouter();
   const { user } = useAuth();
   const isAdmin = user?.user_level === 1;
+  const adminMenuItems = useMemo(() => {
+    if (!user?.is_superadmin) return ADMIN_ITEMS;
+    return [ADMIN_ITEMS[0], ADMIN_ITEM_ACCESOS, ...ADMIN_ITEMS.slice(1)];
+  }, [user?.is_superadmin]);
   const [bibliotecaOpen, setBibliotecaOpen] = useState(() => {
     const path = pathname.replace(/\/$/, '');
     return path === '/area/biblioteca' || path.startsWith('/area/biblioteca/');
@@ -353,7 +363,7 @@ export function AreaSidebar() {
         })}
 
         {isAdmin &&
-          ADMIN_ITEMS.map((item) => {
+          adminMenuItems.map((item) => {
             const active = isActive(item.href);
             return (
               <TouchableOpacity

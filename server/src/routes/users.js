@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { supabase } from '../supabase.js';
 import { changePassword } from '../auth.js';
-import { authMiddleware, adminOnly } from '../middleware/auth.js';
+import { authMiddleware, adminOnly, superAdminOnly } from '../middleware/auth.js';
 
 const router = Router();
 
@@ -59,6 +59,31 @@ router.get('/meta', adminOnly, async (req, res) => {
   }
 });
 
+/** Registro de logins (IP, navegador). Solo superadmin; datos en tabla access_log. */
+router.get('/access-log', superAdminOnly, async (req, res) => {
+  try {
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const limit = Math.min(100, Math.max(10, parseInt(req.query.limit, 10) || 50));
+    const from = (page - 1) * limit;
+    const to = from + limit - 1;
+    const { data, error, count } = await supabase
+      .from('access_log')
+      .select('id, created_at, user_id, email, event_type, ip, user_agent, path', { count: 'exact' })
+      .order('created_at', { ascending: false })
+      .range(from, to);
+    if (error) throw error;
+    res.json({
+      items: data || [],
+      total: count ?? 0,
+      page,
+      limit,
+      totalPages: Math.max(1, Math.ceil((count || 0) / limit)),
+    });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 function escapeIlike(s) {
   return String(s).replace(/[%_]/g, '');
 }
@@ -67,7 +92,7 @@ const PROFILE_FIELDS_LIST =
   'id, name, apellido, user_level, grado, grado_troncal, direccion, telefono, profesion, hist_grado, observaciones, obs_scg33, detalle, exencion, fechas_cuotas, status, last_login';
 
 const PROFILE_FIELDS_ME =
-  'id, name, apellido, user_level, grado, grado_troncal, direccion, telefono, profesion, hist_grado, observaciones, obs_scg33, detalle, exencion, fechas_cuotas, image';
+  'id, name, apellido, user_level, grado, grado_troncal, direccion, telefono, profesion, hist_grado, observaciones, obs_scg33, detalle, exencion, fechas_cuotas, image, is_superadmin';
 
 const PROFILE_FIELDS_ONE =
   'id, name, apellido, user_level, grado, grado_troncal, direccion, telefono, profesion, hist_grado, observaciones, obs_scg33, detalle, exencion, fechas_cuotas, status';

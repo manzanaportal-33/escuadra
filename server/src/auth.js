@@ -27,7 +27,7 @@ export async function login(email, password) {
 
   let profile = (await supabase
     .from('profiles')
-    .select('id, name, apellido, user_level, grado, status')
+    .select('id, name, apellido, user_level, grado, status, is_superadmin')
     .eq('id', authData.user.id)
     .single()).data;
 
@@ -44,7 +44,7 @@ export async function login(email, password) {
     if (insertError) return { success: false, error: insertError.message || 'Error al crear perfil' };
     profile = (await supabase
       .from('profiles')
-      .select('id, name, apellido, user_level, grado, status')
+      .select('id, name, apellido, user_level, grado, status, is_superadmin')
       .eq('id', authData.user.id)
       .single()).data;
   }
@@ -72,6 +72,7 @@ export async function login(email, password) {
         email: authData.user.email,
         user_level: profile.user_level,
         grado: profile.grado,
+        is_superadmin: !!profile.is_superadmin,
         cuerpo_ids,
         cuerpo_id: cuerpo_ids[0] ?? null,
       },
@@ -147,13 +148,19 @@ export async function getUserFromToken(accessToken) {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('id, name, apellido, user_level, grado')
+    .select('id, name, apellido, user_level, grado, is_superadmin')
     .eq('id', user.id)
     .single();
 
   if (!profile) return null;
   const cuerpo_ids = await fetchCuerpoIdsForProfile(profile.id);
-  return { ...profile, cuerpo_ids, cuerpo_id: cuerpo_ids[0] ?? null, email: user.email };
+  return {
+    ...profile,
+    is_superadmin: !!profile.is_superadmin,
+    cuerpo_ids,
+    cuerpo_id: cuerpo_ids[0] ?? null,
+    email: user.email,
+  };
 }
 
 /**
@@ -169,7 +176,7 @@ export async function refreshSession(refreshToken) {
   const session = data.session;
   const profile = (await supabase
     .from('profiles')
-    .select('id, name, apellido, user_level, grado')
+    .select('id, name, apellido, user_level, grado, is_superadmin')
     .eq('id', session.user.id)
     .single()).data;
   if (!profile) return null;
@@ -185,6 +192,7 @@ export async function refreshSession(refreshToken) {
       email: session.user?.email,
       user_level: profile.user_level,
       grado: profile.grado,
+      is_superadmin: !!profile.is_superadmin,
       cuerpo_ids,
       cuerpo_id: cuerpo_ids[0] ?? null,
     },

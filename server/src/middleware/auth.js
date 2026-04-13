@@ -27,3 +27,11 @@ export function adminOnly(req, res, next) {
   }
   next();
 }
+
+/** Solo administrador con profiles.is_superadmin = true. */
+export function superAdminOnly(req, res, next) {
+  if (req.user.user_level !== 1 || !req.user?.is_superadmin) {
+    return res.status(403).json({ error: 'Se requiere rol de superadministrador' });
+  }
+  next();
+}

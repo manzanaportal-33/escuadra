@@ -15,6 +15,8 @@ export type User = {
   nombre: string; // name + apellido para mostrar
   user_level: number;
   grado: number;
+  /** Solo uno o pocos perfiles (columna profiles.is_superadmin). */
+  is_superadmin?: boolean;
   /** Primer cuerpo (compatibilidad); preferir `cuerpo_ids`. */
   cuerpo_id: number | null;
   cuerpo_ids: number[];
@@ -49,6 +51,7 @@ function buildUser(apiUser: {
   grado: number;
   cuerpo_id: number | null;
   cuerpo_ids?: number[] | null;
+  is_superadmin?: boolean | null;
 }): User {
   const rawIds = Array.isArray(apiUser.cuerpo_ids) ? apiUser.cuerpo_ids : [];
   const cuerpo_ids = [...new Set(rawIds.map((x) => Number(x)).filter((n) => Number.isInteger(n) && n > 0))];
@@ -58,6 +61,7 @@ function buildUser(apiUser: {
       : cuerpo_ids[0] ?? null;
   return {
     ...apiUser,
+    is_superadmin: !!apiUser.is_superadmin,
     cuerpo_id: Number.isInteger(cuerpo_id) ? cuerpo_id : null,
     cuerpo_ids,
     nombre: [apiUser.name, apiUser.apellido].filter(Boolean).join(' ').trim() || apiUser.email,
@@ -108,6 +112,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         grado: data.grado != null && data.grado !== '' ? Number(data.grado) : 0,
         cuerpo_id: data.cuerpo_id ?? null,
         cuerpo_ids: Array.isArray(data.cuerpo_ids) ? data.cuerpo_ids : null,
+        is_superadmin: data.is_superadmin,
       });
       await AsyncStorage.setItem(AUTH_KEY, JSON.stringify(userToStore));
       setUser(userToStore);
@@ -166,6 +171,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         grado: apiUser.grado ?? 0,
         cuerpo_id: apiUser.cuerpo_id ?? null,
         cuerpo_ids: Array.isArray(apiUser.cuerpo_ids) ? apiUser.cuerpo_ids : null,
+        is_superadmin: apiUser.is_superadmin,
       });
       await AsyncStorage.setItem(TOKEN_KEY, newToken);
       if (newRefreshToken) await AsyncStorage.setItem(REFRESH_KEY, newRefreshToken);
@@ -215,6 +221,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             grado: data.user.grado ?? 0,
             cuerpo_id: data.user.cuerpo_id ?? null,
             cuerpo_ids: Array.isArray(data.user.cuerpo_ids) ? data.user.cuerpo_ids : null,
+            is_superadmin: data.user.is_superadmin,
           })
         : null;
       await AsyncStorage.setItem(TOKEN_KEY, data.token);

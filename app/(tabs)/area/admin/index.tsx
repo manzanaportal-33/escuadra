@@ -1,10 +1,18 @@
+import { useMemo } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { useAuth } from '@/context/AuthContext';
 import { colors } from '@/theme/colors';
 
-const items = [
+const ALL_ADMIN_ITEMS = [
   { title: 'Hermanos', subtitle: 'Grupos y usuarios', href: '/area/admin/hermanos', icon: 'people' as const },
+  {
+    title: 'Registro de accesos',
+    subtitle: 'Quién ingresó y desde qué IP / navegador (solo superadmin)',
+    href: '/area/admin/accesos',
+    icon: 'finger-print' as const,
+  },
   { title: 'Cuerpos', subtitle: 'Cuerpos escocistas', href: '/area/admin/cuerpos', icon: 'business' as const },
   {
     title: 'Mensajes (contacto)',
@@ -25,6 +33,15 @@ const items = [
 ];
 
 export default function AdminIndexScreen() {
+  const { user } = useAuth();
+  const items = useMemo(
+    () =>
+      ALL_ADMIN_ITEMS.filter(
+        (item) => item.href !== '/area/admin/accesos' || user?.is_superadmin === true
+      ),
+    [user?.is_superadmin]
+  );
+
   return (
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]} contentContainerStyle={styles.content}>
       <Text style={[styles.intro, { color: colors.textSecondary }]}>Administración del área reservada.</Text>
